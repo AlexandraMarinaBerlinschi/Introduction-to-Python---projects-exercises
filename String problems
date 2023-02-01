@@ -10,9 +10,9 @@ Read a word s. Check whether s is a palindrome or a semipalindrome (made up of t
 
 s=input()
 if s[::1]==s[::-1]:
-    print("This palindrom number")
+    print("This is a palindrom number")
 elif len(s)%2==0 and s[:len(s)//2]==s[len(s)//2:len(s)]:
-    print("This semipalindrom number")
+    print("This is a semipalindrom number")
 else:
     print("No")
     
@@ -40,7 +40,7 @@ for i in range(len(s)):
         print(s)
         break
 else:
-    print("Sirul has no vowels")
+    print("String has no vowels")
     
 5.
 Read an s-word of no more than 10 characters. Show on a line the words obtained successively from s
@@ -141,3 +141,204 @@ for i in range(len(s)):
         x=s[i]
 c = c + str(k) + x
 print(c)
+
+9.
+A word is read. Delete all occurrences of the first letter from the word: After deleting the letter 'X' the string obtained is 'S' of length L using 
+different formatting.
+
+s=input()
+x=s[0]
+s=s.replace(x,"")
+print(f "After deleting the letter '{x}' the string obtained is \"{s}\" of length {len(s)}")
+
+10.
+Check (using first the find method, then the index method) whether a string t appears as a substring in a string s, and if so, display all positions where t
+begins in s (non-overlapping occurrences), otherwise display a corresponding message. For example, string t= "abc" appears as a substring in string
+s= "abccabcabababcc" starting at positions 0, 4 and 9.
+
+#index method
+s=input()
+t=input()
+p=s.index(t)
+try:
+    while p>=0:
+        print(p)
+        p=s.index(t,p+len(t))
+except:
+    pass
+
+#find method
+s=input()
+t=input()
+p=s.find(t)
+while p!=-1:
+    print(p)
+    p=s.find(t,p+len(t))
+    
+11.
+The same spelling mistake has been made in a sentence, possibly several times. A sentence and two strings s and t are read from the keyboard - the correct
+one and the misspelled one, each of the three input data being given on a line
+
+a)Display the correct sentence. For example, for the sentence "Problemele cu șiruri de caracteger nu sunt ggerle!",
+# s="re" and t="ger" will display "Problemele cu șiruri de caractere nu sunt grele!".
+
+prop=input()
+s=input()
+t=input()
+prop=prop.replace(t,s)
+print(prop)
+
+b)Modify the program so that it reads a natural number p and corrects a maximum of p such errors (that do not overlap), and if there are more than p display
+the message: "text contains too many errors, only p have been corrected"
+
+prop=input()
+s=input()
+t=input()
+p=int(input())
+cor=prop.replace(t,s)
+prop=prop.replace(t,s,p)
+if cor==prop:
+    print(prop)
+else:
+    print(f "The text contains too many errors, only {p} have been corrected")
+
+12.
+a)Write a program that replaces all occurrences of an s-word in a sentence with a word t(!word, not subscript). The words are separated by one or more spaces.
+prop=input()
+s=input()
+t=input()
+ls=[]
+ls=prop.split()
+prop1=""
+for c in ls:
+    prop1=c.replace(s,t)
+    print(prop1,end=" ")
+    
+b)Same requirement as in a), but for the case where the words in the sentence are separated between them by spaces and the usual punctuation marks
+
+prop=input()
+ls=[]
+ls=prop.split()
+k=0
+for c in ls:
+    if k%2==0:
+        print(c,end=" ")
+    else:
+        print(c,end=",")
+    k+=1
+
+13.
+The figure of Caesar
+a)Se citește un text și un număr natural k. Să se afișeze textul cifrat cu cifrul lui Cezar, prin care fiecare literă (!doar literele) este înlocuită cu 
+litera aflată peste k poziții la dreapta în alfabet în mod circular(valoarea k reprezintă cheia secretă comună pe care trebuie să o cunoască atât expeditorul,
+cât și destinatarul mesajului criptat). De exemplu, pentru textul "O zi frumoasa!" și k=9 se va afișa “X ir oadvxjbj! "
+
+text=input()
+k=int(input())
+text_nou=""
+import string
+alfabet=list(string.ascii_lowercase)
+ALFABET=list(string.ascii_uppercase)
+for i in range(len(text)):
+    if text[i].islower():
+        c=alfabet.index(text[i])
+        text_nou=text_nou+alfabet[(c+k)%26]
+    elif text[i].isupper():
+        c=ALFABET.index(text[i])
+        text_nou=text_nou+ALFABET[(c+k)%26]
+    else:
+        text_nou=text_nou+text[i]
+print(text_nou)
+
+b)Read a natural number k and encrypted text with Caesar's cipher with key k. Display the decrypted text.
+
+text=input()
+k=int(input())
+text_nou=""
+import string
+alfabet=list(string.ascii_lowercase)
+ALFABET=list(string.ascii_uppercase)
+for i in range(len(text)):
+    if text[i].islower():
+        c=alfabet.index(text[i])
+        text_nou=text_nou+alfabet[(c-k)%26]
+    elif text[i].isupper():
+        c=ALFABET.index(text[i])
+        text_nou=text_nou+ALFABET[(c-k)%26]
+    else:
+        text_nou=text_nou+text[i]
+print(text_nou)
+
+14.
+A text is read from the keyboard. You are asked to "translate" the given text into gibberish: after each vowel add the letter p and once again that vowel 
+(after a, e, i, o, u add respectively pa, pe,pi, po, pu). Example: "Ana are mere." becomes "Apanapa aparepe meperepe." Given such a text in gibberish,
+can the original text be obtained? If so, write a program that receives a text in the gibberish language builds in memory and displays the original text.
+
+normal -> gibberish
+
+text=input()
+vocale="aeiouAEIOU"
+text_nou=""
+for i in range(len(text)):
+    c=vocale.find(text[i])
+    if c!=-1:
+        text_nou=text_nou+text[i]+"p "+text[i].lower()
+    else:
+        text_nou=text_nou+text[i]
+print(text_nou)
+
+gibberish -> normal
+text=input()
+vocale="aeiouAEIOU"
+i=0
+text_nou=""
+while i<len(text):
+    c=vocale.find(text[i])
+    text_nou=text_nou+text[i]
+    if c!=-1:
+        i=i+3
+    else:
+        i=i+1
+print(text_nou)
+
+15.
+Ana's electronic diary contains, every day, a sentence with information about the expenses she made that day. Write a program that reads one such sentence 
+from Ana's diary and then display the total amount she spent that day. For example, for the sentence "Today I bought 5 RON worth of bread, I spent 10 RON on
+milk and 15 RON on cheese. I also bought some slippers for 50 RON!",the program must show a total of 80 RON. The sentence is considered correct, i.e. 
+all the numbers that appear in it are natural numbers representing the amounts Ana spent that day! 
+
+phrase=input()
+ls=[]
+ls=phrase.split()
+sum=0
+for cuv in ls:
+    if cuv.isdigit():
+        sum=sum+int(cuv)
+print(sum, "RON")
+
+16.
+Write a program that reads a string of characters and decides if this is a correct full name of a person.A full name is considered correct if it satisfies
+the following properties: 
+-the person can have at most two first names, and if there are two then they are separated by a hyphen ('-').The same applies to the surname 
+-the surname or forename contains only letters and at most one hyphen. 
+-every surname or forename consists of at least 3 letters. 
+-every surname or forename begins with a capital letter. 
+Example of correct full names: Ionescu-Cherea Mihai-Adrian,Popescu Elena-Maria, Vlad Matei and incorrect names: Ionescu-Cherea Mihai, Vlad Matei Alexandru
+
+name=input()
+ls=[]
+ls=name.split()
+print(ls)
+print(len(ls))
+gresit=0
+print()
+for cuv in ls:
+    if cuv[0].isupper() and cuv[0].isalpha() and len(cuv)>=3:
+        if cuv.find("-")==-1 and len(ls)>2:
+            wrong=1
+    else:
+        wrong=1
+if gresit==1:
+    print("This name is not correct")
+else:
+    print("This name is correct")
