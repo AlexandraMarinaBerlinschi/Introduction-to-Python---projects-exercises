@@ -1,0 +1,143 @@
+1.
+Equivalent writing for s[::-1] of the form s[i:j:-1].
+
+print(s[-1:-(len(s)+1):-1])
+
+2.
+Read a word s. Check whether s is a palindrome or a semipalindrome (made up of two equal halves).
+#s="abcba" => palindrome
+#s="abcabc" => semipalindrome
+
+s=input()
+if s[::1]==s[::-1]:
+    print("This palindrom number")
+elif len(s)%2==0 and s[:len(s)//2]==s[len(s)//2:len(s)]:
+    print("This semipalindrom number")
+else:
+    print("No")
+    
+3.    
+Read a string and a natural number k. Delete from s the character at position k (positions numbered from 0) and display the new string obtained
+
+s=input()
+k=int(input())
+if k==0:
+    print(s[1:len(s)])
+else:
+    print(s[0:k]+s[k+1:len(s)])    
+    
+4.
+Read a word s.Display the string obtained by deleting the first vowel.
+
+s=input()
+for i in range(len(s)):
+    if s[i].lower() in "aeiou" and i==0:
+        s=s.replace(s[i],"",1)
+        print(s)
+        break
+    elif s[i].lower() in "aeiou" and i>0:
+        s=s[:i]+s[i+1:len(s)]
+        print(s)
+        break
+else:
+    print("Sirul has no vowels")
+    
+5.
+Read an s-word of no more than 10 characters. Show on a line the words obtained successively from s
+#cutting the first and last letter (displayed centred on the 10 characters):
+# algorithm
+# lgorit
+# gori
+# or
+
+s=input()
+k=0
+while k<len(s)//2:
+    s=s.replace(s[k]," ",1)
+    s=s.replace(s[len(s)-1-k]," ",1)
+    print(s)
+    k+=1
+
+6.
+a)Read a word w, a natural number p, a natural number n and a string of n words, each given on a line. Display all words that are p-rhymes of the w 
+(i.e. the last p characters in the word coincide with the last p characters of w) and are at least p+2 in length. For example, for w = "cere", p = 2 ,
+n = 4 and the words "pere", "teste", "are" and "programare", the words "pere" and "programare" must be displayed ("are" rhymes with ith "mere", but is 
+shorter than p+2)
+
+w=input()
+p=int(input())
+n=int(input())
+c=""
+while n>0:
+    x=input()
+    if x[len(x)-p:len(x)]==w[len(w)-p:len(w)] and len(x)>=p+2:
+        c=c+x+" "
+    n-=1
+print(c)
+
+b)Same requirement, but for words in a sentence where the words are separated by spaces.For example, for w = "cere", p = 2 , n = 4 and the sentence 
+"Ana are mere si pere si banane de mancare", you must display the following result: 2-rhymes of the word 'cere' is: are mere pere mancare
+
+w=input()
+p=int(input())
+n=int(input())
+m=input()
+c=""
+z=" "
+while len(m)>0:
+    if z in m:
+        poz=m.index(z)
+        x = m[:poz]
+        m = m[poz + 1:len(m)]
+    else:
+        x=m[:len(m)]
+        m=""
+    if x[len(x)-p:len(x)]==w[len(w)-p:len(w)]:
+        c=c+x+" "
+print(f"{p}-rimes of the word '{w}' are: {c}")
+
+7.
+Read a string s. Check if there is a string t, different from s, such that it can be obtained by concatenating an arbitrary number of times (𝑘>1) the 
+string t (i.e. check whether the string s is periodic). If there are several such strings t it will be determined the longest. Example: the string 
+s = abbaabbaabbaabba is obtained by concatenating the string t= abbaabba twice.
+
+s=input()
+for lun_per in range(len(s)-1,-1,-1):
+    if len(s)%lun_per==0:
+        if s==s[:lun_per]*(len(s)//lun_per):
+            print(s[:lun_per])
+            break
+else:
+    print("Sir is not periodic")
+    
+8.
+a)Read a coded text according to the rule: in front of each character is written a number representing number of consecutive occurrences of this character
+in the text. Write a program that reads the encoded text and decodes it, knowing that the original text contained no numbers. For example the encoded text
+"1v3a1c1a1n1t5a2 1m13a1r4e" will decode "vaaacantaaaaa maaaaaaaaaaaaareeee"
+
+s=input()
+c=""
+for i in range(len(s)):
+    if s[i].isdigit()==True: # .isdigit()==True check if character is digit
+        x=int(s[i])
+    else:
+        while x>0:
+            c=c+s[i]
+            x-=1
+print(c)
+
+b)Write a program that reads a given text on a line and encodes it according to the rule in a).
+
+s=input()
+x=s[0]
+k=0
+c=""
+for i in range(len(s)):
+    if x == s[i]:
+        k=k+1
+    else:
+        c = c + str(k) + x
+        k=1
+        x=s[i]
+c = c + str(k) + x
+print(c)
