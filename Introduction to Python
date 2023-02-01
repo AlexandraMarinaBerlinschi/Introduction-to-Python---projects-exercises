@@ -102,3 +102,29 @@ for i in numbers:
             y=y*10+z%10
         z=z//10
 print(x,y)
+
+
+#Check if a given number from the keyboard is perfectly square.
+
+    #variant 1 with sqrt
+x=int(input())
+import math #new scale to look up all math functions
+if math.sqrt(x).is_integer(): #data type float(class) has method x.is_integer()
+    print("This is a perfect square")
+else:
+    print("Not a perfect square").
+
+    #variant 2 with sqrt
+x=int(input())
+from math import sqrt #It will be used without being prefixed by the mode name ( !! just sqrt)
+if sqrt(x).is_integer():
+    print("This is perfect square")
+else:
+    print("Not a perfect square")
+
+    #variant without sqrt
+x=int(input())
+if int(x**0.5)==x**0.5:
+    print("It is a perfect square")
+else:
+    print("Not a perfect square")
