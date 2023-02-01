@@ -1,0 +1,104 @@
+Read a natural number n. Test whether it is palindromic
+
+n=int(input("Enter the number:"))
+x=0
+y=n
+while n>0:
+    x=x*10+n%10
+    n=n//10
+if x==y:
+    print("Palindrom number")
+else:
+    print("No palindrome number")
+
+
+Read a string consisting of 𝑛 strictly positive real numbers (𝑛≥2), representing the course exchange rate RON/EURO for 𝑛 consecutive days.Display the days
+between which the most the largest increase in the exchange rate and the amount of the increase. For example, for 𝑛=6 days and the exchange rate given by the
+string 4.25,4.05,4.25,4.48,4.30,4.40, the largest increase of was RON 0.23 between days 3 and 4.
+
+n=int(input("Enter number:"))
+y=z=b=a=0
+day=1
+while n>0:
+    x=float(input("Exchange rate:"))
+    if x>y:
+        z=x-y
+        y=x
+    if x<y:
+        z=y-x
+        y=x
+    if b>0:
+        if a<z:
+            a=z
+            zi=zi+1
+    n=n-1
+    b=b+1
+print(a, "RON", "on days",day, "and",day+1)
+
+
+A craftsman has to pave the entire floor of a rectangular kitchen of size 𝐿1×𝐿2 centimetres, with square tiles, all of the same size. Knowing that the master
+builder does not want to cut any tiles and wants to use a number minimum number of tiles, determine the size of the tiles he needs, such as and their number.
+For example, if 𝐿1=440 cm and 𝐿2=280 cm, then the craftsman needs 77 tiles tiles, each with a side of 40 cm.
+
+n=int(input("Enter L1:"))
+m=int(input("Insert L2:"))
+x=n*m
+y=x//1600
+print(y)
+
+
+Read a number n and a string of n natural numbers. Show the smallest and the largest number in the string (using a minimum number of comparison operations)
+
+n=int(input("Enter number:"))
+min=0
+x=int(input("Enter the number in the string:"))
+max=x
+n-=1
+while n>0:
+    x=int(input("Enter number in string:"))
+    if min<x:
+        min=x
+    if max>x:
+        max=x
+    n-=1
+print(max,min)
+
+
+Read nine natural numbers a and b. Display the lowest Fibonacci number in the interval [a,b].
+
+a=int(input("Enter the number a:"))
+b=int(input("Enter the number b:"))
+n=a
+x=0
+y=1
+while(n<=b):
+    if n==0:
+        print(n)
+    else:
+        z=x+y
+        while z<=n:
+            x=y
+            y=z
+            if n==z:
+                print(n)
+                n=b
+            z=x+y
+    n=n+1
+    
+    
+A natural number 𝑛 is read. Display the smallest and the largest number that can be formed from the digits of 𝑛. For example, for 𝑛=812383 you need the 
+numbers 883321 and 123388 are displayed.
+
+n=int(input("Enter the number n:"))
+p=1
+x=y=0
+numbers = [0,1,2,3,4,5,6,7,8,9]
+for i in numbers:
+    z=n
+    while z>0:
+        if z%10==i:
+            x=z%10*p+x
+            p=p*10
+            y=y*10+z%10
+        z=z//10
+print(x,y)
