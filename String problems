@@ -342,3 +342,44 @@ if gresit==1:
     print("This name is not correct")
 else:
     print("This name is correct")
+
+17.
+Read a sentence with words separated by spaces (one or more). Create a list of words that begin with a vowel (using comprehension)
+
+s=input()
+vocale="aeiou"
+ls=s.split()
+ls1=[]
+ls2=[ls1.append(i) for i in ls if i[0] in vocale]
+print(ls1)
+
+18.
+Caesar's cipher (using comprehension)
+
+a)Create in memory a list of the small letters of the alphabet using comprehension and a word with all the lowercase letters of the alphabet
+
+import string
+lista_m=[]
+ls=[]
+lista_m=[ls.extend(string.ascii_lowercase)]
+litere_mici=string.ascii_lowercase
+print(ls)
+print(litere_mici)
+
+b)Read a text containing only the lower case letters of the English alphabet and the usual punctuation and a natural number k. Create in memory and display
+the ciphertext with Caesar's cipher, whereby each letter in a given text is replaced by the letter located over 𝑘 positions to the right in the alphabet in 
+a circular fashion (the value 𝑘 represents the key The common secret key to be known by both the sender and the recipient of the encrypted message).
+
+text=input()
+k=int(input())
+text_nou=""
+import string
+alfabet=list(string.ascii_lowercase)
+for i in range(len(text)):
+    if text[i].islower():
+        c=alfabet.index(text[i])
+        text_nou=text_nou+alfabet[(c+k)%26]
+    else:
+        text_nou=text_nou+text[i]
+print(text_nou)
+
