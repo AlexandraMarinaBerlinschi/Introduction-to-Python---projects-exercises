@@ -192,3 +192,155 @@ while n>0:
         y=z
     print(x,end="+")
     n=n-x
+
+11.
+Three numbers are read. Show the minimum of them.
+
+x=int(input("First number:"))
+y=int(input("Second number:"))
+z=int(input("Third number:"))
+a=min(x,y,z)
+print(a)
+
+12.
+Read a natural number n. Check if it is palindromic
+
+n=int(input("Enter the number n:"))
+x=0
+y=n
+while y>0:
+    x=x*10+y%10
+    y=y//10
+if x==n:
+    print("Number entered is palindrome")
+else:
+    print("Number entered is not palindromic")
+    
+#or
+
+n=input("Enter number n:")
+print( n[::-1] == n )
+
+13.
+Read a natural number n and then n integers. Display the largest two distinguished numbers in the string
+
+n=int(input("Enter the number n:"))
+max=0
+max2=0
+while n>0:
+    x=int(input("Enter the numbers in the string:"))
+    if x>max:
+        max2=max
+        max=x
+    n-=1
+print(max2,max)
+
+14.
+Read a natural number n and a digit k.Show the number formed by removing all occurrences of the digit k from the number n
+
+n=int(input("Enter the number n:"))
+k=int(input("Enter digit k:"))
+x=0
+p=1
+while n>0:
+    if n%10!=k:
+        x=n%10*p+x
+    p=p*10
+    n=n//10
+print(x)
+
+15.
+Read a natural number n. Check if it is a perfect square.
+
+n=int(input("Enter the number n:"))
+d=2
+k=0
+while d<n:
+    if n//d==d:
+        k=1
+    d+=1
+
+if k==1:
+    print("This is a perfect square")
+else:
+    print("Not a perfect square")
+    
+16.
+Read a natural number n. Check if it is the power of 2
+
+n=int(input("Enter the number n:"))
+nr=1
+k=0
+while k==0 and nr<n:
+    nr=nr*2
+    if nr==n:
+        k=1
+if k==1:
+    print("This is power of 2")
+else:
+    print("Not the power of 2")
+    
+17.
+Read a natural number n. Calculate the arithmetic mean of all its divisors.
+
+n=int(input("Enter the number n:"))
+d=1
+sum=0
+k=0
+while d<=n:
+    if n%d==0:
+        sum=sum+d
+        k+=1
+    d+=1
+ma=sum/k
+print(ma)
+
+18.
+A number is called a superprime if it and its prefixes are prime. Write a program that reads a number n from the keyboard and checks if it is superprime
+
+n=int(input("Enter the number n:"))
+k=0
+while n>0:
+    z=n
+    d=2
+    while d<n:
+        if n%d==0:
+            k+=1
+        d=d+1
+    n=n//10
+if k==0:
+    print("Superprim")
+else:
+    print("Not superprim")
+    
+19.
+Read n numbers. Check that all the numbers are equal.
+
+n=int(input("Enter the number n:"))
+x=int(input("Enter the number:"))
+n=n-1
+z=x
+k=0
+while n>0:
+    x=int(input("Enter number:"))
+    if z!=x:
+        k=1
+    n-=1
+if k==1:
+    print("No")
+else:
+    print("Yes")
+    
+20.
+Read a natural number n. Calculate its check digit.
+
+n=int(input("Enter the number n:"))
+sum=0
+while n>9:
+    x=n
+    sum=0
+    while x>0:
+        sum=sum+x%10
+        x=x//10
+    n=sum
+print(sum)
