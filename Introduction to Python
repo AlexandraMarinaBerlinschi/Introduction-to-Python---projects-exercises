@@ -128,3 +128,26 @@ if int(x**0.5)==x**0.5:
     print("It is a perfect square")
 else:
     print("Not a perfect square")
+
+
+Read two natural numbers a and b with no more than two digits. Show all positive natural numbers of at most two digits that divide by 5 and are not in the 
+range [a,b] (the numbers will be displayed on the same line, ordered ascending, then descending).
+
+a=int(input())
+b=int(input())
+for i in range(a):
+    if i%5==0:
+        print(i,end=" ")
+i=b+1
+while i<100:
+    if i%5==0:
+        print(i,end=" ")
+    i=i+1
+i=99
+while i>b:
+    if i%5==0:
+        print(i,end=" ")
+    i=i-1
+for i in range(a):
+    if i%5==0:
+        print(i,end=" ")
