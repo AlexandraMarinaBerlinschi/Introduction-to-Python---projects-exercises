@@ -151,3 +151,43 @@ while i>b:
 for i in range(a):
     if i%5==0:
         print(i,end=" ")
+        
+
+Read a string of n >1 numbers. Display the number of values of type hill (greater than neighbouring elements; the first and last elements in the string have
+only one neighbour)
+
+n=int(input())
+x=int(input())
+y=int(input())
+n=n-2
+c=0
+if x>y:
+    c=c+1
+while n>0:
+    z = int(input())
+    n-=1
+    if x<y and y>z:
+        c+=1
+    x=y
+    y=z
+print(c)
+     
+
+Given a positive natural number n. Display a decomposition of n as the sum of distinct terms in the string that does not contain two consecutive Fibonacci
+numbers as terms. Is there always such a decomposition?
+
+n=int(input())
+print(f"{n}=",end="")
+while n>0:
+    ls = []
+    x = 0
+    ls.append(x)
+    y = 1
+    z = 0
+    while z<=n:
+        z=x+y
+        x=y
+        ls.append(y)
+        y=z
+    print(x,end="+")
+    n=n-x
